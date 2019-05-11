@@ -8,6 +8,7 @@ edition = "2018"
 colored = "1.8"
 termion = { version = "1.5", optional = true }
 tui = "0.5.1"
+rand = "0.6"
 
 [features]
 default = ["termion"]

@@ -3,8 +3,10 @@ use std::fs::File;
 use std::io::Read;
 use std::io;
 use std::cmp;
+use rand::prelude::*;
 extern crate colored;
 use colored::*;
+use rand::Rng;
 
 use termion::input::MouseTerminal;
 use termion::raw::IntoRawMode;
@@ -43,6 +45,7 @@ fn main()
     let mut redraw : u64 = 0;
     let mut buffer = [0u8;7];
     let mut parsed_data : ParsedData = ParsedData::new();
+    let mut rng = rand::thread_rng();
 
     loop
     {
@@ -55,6 +58,11 @@ fn main()
 
         if redraw % 5 == 0
         {
+            let mut color = Color::Red;
+
+            if parsed_data.btn2 {color = Color::Blue}
+            if parsed_data.btn2 && parsed_data.btn1 {color = Color::Rgb(rng.gen(), rng.gen(), rng.gen())}
+
             terminal.draw(|mut f| 
             {
                 let chunks = Layout::default()
@@ -68,7 +76,7 @@ fn main()
                     .data(&vector)
                     .bar_width((f.size().width as f32 / 6.4) as u16)
                     .max(800)
-                    .style(Style::default().fg(Color::Red))
+                    .style(Style::default().fg(color))
                     .value_style(Style::default().fg(Color::Black).bg(Color::Green))
                     .render(&mut f, chunks[0]);
             }).unwrap();
@@ -80,7 +88,7 @@ fn main()
 
         //println!("{:5?}", parsed_data);
 
-        if parsed_data.btn1 {return;}
+        if parsed_data.btn1 && !parsed_data.btn2 {return;}
     }
 }
 
