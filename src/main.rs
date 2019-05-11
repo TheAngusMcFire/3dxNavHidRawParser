@@ -20,8 +20,8 @@ fn main()
     let arguments : Vec<String> = env::args().collect();
     if arguments.len() != 2 { panic!("Error invalid amount of arguments"); }
     let file_name : &String = &arguments[1];
-    let mut file = File::open(file_name).unwrap();
     println!("{} {}","Using file:".blue(), file_name.green());
+    let mut file = File::open(file_name).unwrap();
 
     let stdout = io::stdout().into_raw_mode().unwrap();
     let stdout = MouseTerminal::from(stdout);
