@@ -127,10 +127,10 @@ fn read_data_from_space_mouse(file : &mut File, buffer : &mut [u8], parsed_data 
     else
     {panic!("invalid segment frame descriptor");}        
 
-    parse_and_print(&mut buffer[..], parsed_data);
+    parse_hid_frame(&mut buffer[..], parsed_data);
 }
 
-fn parse_and_print(in_data : &mut [u8], parsed_data : &mut ParsedData)
+fn parse_hid_frame(in_data : &mut [u8], parsed_data : &mut ParsedData)
 {
     if in_data[0] == 1 
     {
