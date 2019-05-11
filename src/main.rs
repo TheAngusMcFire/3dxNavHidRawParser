@@ -60,7 +60,7 @@ fn main()
 
         parse_and_print(&mut buffer[..], &mut parsed_data);
 
-        println!("{:3?}", parsed_data);
+        println!("{:5?}", parsed_data);
     }
 }
 
