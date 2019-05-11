@@ -32,12 +32,12 @@ fn main()
 
     let mut vector : Vec<(&str, u64)> = vec!
     [
-        ("X"    , 9 ),
-        ("Y"    , 12),
-        ("Z"    , 5 ),
-        ("Pitch", 8 ),
-        ("Roll" , 2 ),
-        ("Yaw"  , 4 )
+        ("X"    , 400),
+        ("Y"    , 400),
+        ("Z"    , 400),
+        ("Pitch", 400),
+        ("Roll" , 400),
+        ("Yaw"  , 400)
     ];
 
     let mut redraw : u64 = 0;
